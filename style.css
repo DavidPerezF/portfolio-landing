@@ -544,3 +544,87 @@ a {
     opacity: 1;
     transform: translateY(0); /* Estado final (visible y en su lugar exacto) */
 }
+
+/*==================================================
+  BOTONES FLOTANTES
+==================================================*/
+.floating-widgets {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.float-btn {
+    background-color: var(--color-gray-900);
+    color: var(--color-white);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+}
+
+.float-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.float-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(15px);
+}
+
+.float-btn.text-btn {
+    width: auto;
+    padding: 0 20px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: var(--color-gray-900);
+    color: var(--color-white);
+}
+
+/* Los botones flotantes heredan los mismos estilos circulares u ovalados unificados */
+
+/*==================================================
+  MODO OSCURO REAL (DARK MODE - VARIABLES)
+==================================================*/
+/* Al alterar las variables desde la raíz evitamos usar filter, lo que 
+   repara instantáneamente el bug de 'position: fixed' que ocultaba el widget */
+html[data-theme="dark"] {
+    --color-white: #111827;
+    --color-gray-100: #1f2937;
+    --color-gray-500: #9ca3af;
+    --color-gray-700: #e5e7eb;
+    --color-gray-900: #f9fafb;
+}
+
+/* Asegurar que la barra de navegación se mantenga super oscura y elegante en el dark mode
+   (ya que si dejaramos que invirtiera naturalmente a gris-900 se vería blanca) */
+html[data-theme="dark"] .header {
+    background-color: #0f1522;
+    border-bottom: 1px solid #1f2937;
+}
+
+html[data-theme="dark"] .logo {
+    color: #f9fafb;
+}
+
+html[data-theme="dark"] .nav-list a {
+    color: #e5e7eb; /* Color claro para que resalte sobre el fondo de la barra oscura */
+}
+
+html[data-theme="dark"] .nav-list a:hover {
+    color: var(--color-primary); /* Se mantiene el azul originial en el efecto de pasar el ratón */
+}

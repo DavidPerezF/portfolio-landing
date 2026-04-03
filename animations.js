@@ -119,4 +119,48 @@ document.addEventListener("DOMContentLoaded", () => {
         counterObserver.observe(counter);
     });
 
+    // ==========================================
+    // WIDGETS: Modo Oscuro y Volver Arriba
+    // ==========================================
+
+    // --- MODO OSCURO ---
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    // Revisar el localStorage para recordar la elección del usuario
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+        let theme = document.documentElement.getAttribute('data-theme');
+        if (theme === 'dark') {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'light');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+    });
+
+    // --- BOTÓN VOLVER ARRIBA ---
+    const backToTopBtn = document.getElementById('back-to-top');
+
+    // Detectar scroll para mostrar u ocultar botón de subir
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) { // Al empezar a bajar un poco
+            backToTopBtn.classList.remove('hidden');
+        } else {
+            backToTopBtn.classList.add('hidden');
+        }
+    });
+
+    // Acción de subir suave al hacer clic en el botón
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
 });
