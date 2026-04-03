@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio</title>
+    <!-- Incluyendo fuentes de Google para tipografía moderna (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HEADER: Flexbox para alinear el logo a la izquierda y menú a la derecha -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">MiPortafolio<span class="dot">.</span></div>
+            <nav class="nav">
+                <!-- Mostramos los enlaces como lista sin viñetas para usar Flexbox horizontal -->
+                <ul class="nav-list">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#sobre-mi">Sobre mí</a></li>
+                    <li><a href="#proyectos">Proyectos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO: Flexbox para posicionar imagen y texto lado a lado -->
+        <section id="inicio" class="hero section-spacing container">
+            <div class="hero-content">
+                <h1>Hola, soy <span class="highlight">David</span></h1>
+                <p class="hero-subtitle"><span class="typed-text"></span></p>
+                <div class="hero-actions">
+                    <a href="#contacto" class="btn btn-primary">Contáctame</a>
+                    <a href="#" class="btn btn-secondary">Descargar CV</a>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <img src="./images/hero_image.png" alt="Ilustración de un desarrollador" class="hero-image">
+            </div>
+        </section>
+
+        <!-- SOBRE MI: Media Queries para 2 columnas en PC y 1 en móvil -->
+        <section id="sobre-mi" class="about section-spacing bg-light">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Sobre mí</h2>
+                    <div class="divider"></div>
+                </div>
+                <!-- about-content usa Flexbox o Grid para dos columnas -->
+                <div class="about-content">
+                    <div class="about-image-wrapper">
+                        <img src="./images/profile_image.png" alt="Foto sobre mi" class="about-image">
+                    </div>
+                    <div class="about-text">
+                        <h3>¡Hola! Me dedico a crear experiencias web increíbles y modernas.</h3>
+                        <p>Con un fuerte enfoque en el diseño limpio, estructurado y semántico. Me encanta utilizar las últimas herramientas y estándares de la web como HTML5, CSS3, Flexbox y CSS Grid para dar vida a mis ideas de manera eficiente y ágil.</p>
+                        <p>Mi principal objetivo es construir interfaces que no solo luzcan profesionales y elegantes, sino que sean completamente responsive y adaptables a cualquier tipo de dispositivo (móvil, tablet, escritorio).</p>
+
+                        <!-- Contenedor para los contadores animados (Fase 3) -->
+                        <div class="about-stats" style="display: flex; gap: 2rem; margin-top: 2rem;">
+                            <div class="stat-item">
+                                <h4 style="font-size: 2.5rem; color: var(--color-primary); line-height: 1;"><span class="counter" data-target="5">0</span>+</h4>
+                                <p style="font-size: 0.9rem; font-weight: 500;">Años de experiencia</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4 style="font-size: 2.5rem; color: var(--color-primary); line-height: 1;"><span class="counter" data-target="45">0</span>+</h4>
+                                <p style="font-size: 0.9rem; font-weight: 500;">Proyectos realizados</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROYECTOS: CSS Grid para galería de tarjetas -->
+        <section id="proyectos" class="projects section-spacing container">
+            <div class="section-header center">
+                <h2>Proyectos Destacados</h2>
+                <div class="divider center"></div>
+                <p class="section-subtitle">Una selección de mis trabajos más recientes.</p>
+            </div>
+            
+            <!-- El contenedor projects-grid usará CSS Grid -->
+            <div class="projects-grid">
+                
+                <!-- Tarjeta de Proyecto 1 -->
+                <article class="project-card">
+                    <div class="project-image-wrapper">
+                        <img src="./images/project_image_1.png" alt="Proyecto 1" class="project-image">
+                    </div>
+                    <div class="project-info">
+                        <h3>Dashboard Analytics</h3>
+                        <p>Una interfaz de panel de control moderna y responsiva construida con los beneficios de CSS Grid.</p>
+                        <a href="#" class="btn btn-outline">Ver proyecto</a>
+                    </div>
+                </article>
+
+                <!-- Tarjeta de Proyecto 2 -->
+                <article class="project-card">
+                    <div class="project-image-wrapper">
+                        <img src="./images/project_image_1.png" alt="Proyecto 2" class="project-image">
+                    </div>
+                    <div class="project-info">
+                        <h3>App de Finanzas</h3>
+                        <p>Plataforma para el seguimiento de gastos y gestión de ingresos usando un layout con Flexbox.</p>
+                        <a href="#" class="btn btn-outline">Ver proyecto</a>
+                    </div>
+                </article>
+
+                <!-- Tarjeta de Proyecto 3 -->
+                <article class="project-card">
+                    <div class="project-image-wrapper">
+                        <img src="./images/project_image_1.png" alt="Proyecto 3" class="project-image">
+                    </div>
+                    <div class="project-info">
+                        <h3>E-Commerce UI</h3>
+                        <p>Un diseño minimalista para una tienda en línea completamente funcional y 100% adaptable.</p>
+                        <a href="#" class="btn btn-outline">Ver proyecto</a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- CONTACTO: Formulario básico alineado centrado -->
+        <section id="contacto" class="contact section-spacing bg-light">
+            <div class="container">
+                <div class="section-header center">
+                    <h2>Ponte en contacto</h2>
+                    <div class="divider center"></div>
+                    <p class="section-subtitle">¿Tienes un proyecto en mente? ¡Escríbeme!</p>
+                </div>
+                
+                <!-- Contenedor del formulario, estilizado y centrado -->
+                <div class="contact-form-wrapper">
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" id="name" name="name" placeholder="Ej: Juan Pérez" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" name="message" rows="5" placeholder="¿Cómo te puedo ayudar?" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Enviar mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER: Flexbox para alinear enlaces y derechos -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <p class="copyright">&copy; 2026 David. Todos los derechos reservados.</p>
+            <div class="footer-social">
+                <!-- Enlaces a redes -->
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Librería Typed.js -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    
+    <!-- Script de Animaciones JS -->
+    <script src="animations.js"></script>
+</body>
+</html>

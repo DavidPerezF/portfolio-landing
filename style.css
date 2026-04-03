@@ -1,0 +1,546 @@
+/*==================================================
+  VARIABLES Y RESETEO BÁSICO
+==================================================*/
+:root {
+    /* Paleta de colores suaves (minimalista y moderno) */
+    --color-primary: #3b82f6;
+    /* Azul moderno */
+    --color-primary-dark: #2563eb;
+    --color-gray-900: #111827;
+    --color-gray-700: #374151;
+    --color-gray-500: #6b7280;
+    --color-gray-100: #f3f4f6;
+    --color-white: #ffffff;
+
+    /* Tipografía de Google Fonts */
+    --font-main: 'Inter', sans-serif;
+
+    /* Espaciados y estructura */
+    --max-width: 1200px;
+    --spacing-sm: 1rem;
+    /* 16px */
+    --spacing-md: 2rem;
+    /* 32px */
+    --spacing-lg: 4rem;
+    /* 64px */
+    --spacing-xl: 6rem;
+    /* 96px */
+
+    /* Bordes y sombras para un look premium */
+    --border-radius: 8px;
+    --box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --transition: all 0.3s ease-in-out;
+}
+
+/* Reset de márgenes y paddings. Box-sizing para facilitar el cálculo de anchos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    /* Desplazamiento suave al hacer clic en los enlaces del menú */
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--color-gray-700);
+    line-height: 1.6;
+    background-color: var(--color-white);
+}
+
+img {
+    max-width: 100%;
+    /* Imágenes responsive por defecto */
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/*==================================================
+  UTILIDADES GLOBALES
+==================================================*/
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+.section-spacing {
+    padding: var(--spacing-xl) 0;
+}
+
+.bg-light {
+    background-color: var(--color-gray-100);
+}
+
+.highlight {
+    color: var(--color-primary);
+}
+
+.section-header {
+    margin-bottom: var(--spacing-lg);
+}
+
+.section-header.center {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    color: var(--color-gray-900);
+    margin-bottom: 0.5rem;
+}
+
+.divider {
+    height: 4px;
+    width: 60px;
+    background-color: var(--color-primary);
+    border-radius: 2px;
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    color: var(--color-gray-500);
+    font-size: 1.1rem;
+}
+
+/* Botones */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--border-radius);
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-2px);
+    /* Micro-interacción */
+    box-shadow: var(--box-shadow);
+}
+
+.btn-secondary {
+    background-color: var(--color-gray-900);
+    color: var(--color-white);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-gray-700);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.btn-outline:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+
+/*==================================================
+  HEADER Y NAVEGACIÓN (Uso de Flexbox)
+==================================================*/
+.header {
+    background-color: var(--color-gray-900);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    /* Sombra suave para separar el header */
+    position: sticky;
+    /* Se queda fijo al hacer scroll */
+    top: 0;
+    z-index: 1000;
+}
+
+/* Aplicando FLEXBOX al contenedor del header */
+.header-container {
+    display: flex;
+    /* Activa Flexbox */
+    justify-content: space-between;
+    /* El logo a la izq, y nav a la der */
+    align-items: center;
+    /* Alineación vertical al centro */
+    height: 80px;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-white);
+}
+
+.logo .dot {
+    color: var(--color-primary);
+}
+
+/* Aplicando FLEXBOX a los items de la lista de navegación */
+.nav-list {
+    list-style: none;
+    /* Quitamos las viñetas predeterminadas */
+    display: flex;
+    /* Elementos horizontales */
+    gap: var(--spacing-md);
+    /* Espaciado entre links */
+}
+
+.nav-list a {
+    font-weight: 500;
+    color: var(--color-gray-100);
+    transition: var(--transition);
+}
+
+.nav-list a:hover {
+    color: var(--color-primary);
+}
+
+
+/*==================================================
+  SECCIÓN HERO (Uso de Flexbox / Grid para Responsive)
+==================================================*/
+/* Usaremos Flexbox para que la imagen y el texto queden uno al lado del otro en PC */
+.hero {
+    display: flex;
+    align-items: center;
+    /* Alinea al centro verticalmente */
+    justify-content: space-between;
+    min-height: calc(100vh - 80px);
+    /* Ocupar alto pantalla menos el header */
+    gap: var(--spacing-lg);
+}
+
+.hero-content {
+    flex: 1;
+    /* El texto ocupa el espacio disponible */
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    color: var(--color-gray-900);
+    margin-bottom: var(--spacing-sm);
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-gray-500);
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    /* Espaciado entre botones */
+}
+
+.hero-image-container {
+    flex: 1;
+    /* La imagen toma la otra mitad */
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image {
+    width: 100%;
+    max-width: 500px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    /* Una sombra premium a la ilustración */
+    box-shadow: var(--box-shadow);
+}
+
+
+/*==================================================
+  SECCIÓN SOBRE MÍ (Uso de Flexbox/Grid + Media Query)
+==================================================*/
+.about-content {
+    display: grid;
+    /* Usamos Grid para 2 columnas */
+    grid-template-columns: 1fr 1fr;
+    /* Dos columnas iguales en desktop */
+    gap: var(--spacing-lg);
+    align-items: center;
+}
+
+.about-image {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: var(--box-shadow);
+}
+
+.about-text h3 {
+    font-size: 1.75rem;
+    color: var(--color-gray-900);
+    margin-bottom: 1rem;
+}
+
+.about-text p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+
+/*==================================================
+  SECCIÓN PROYECTOS (Uso avanzado de CSS Grid)
+==================================================*/
+/* GRID: Ideal para galerías o tarjetas de tamaño uniforme */
+.projects-grid {
+    display: grid;
+    /* Crear columnas auto-adaptables. En PC veremos ~3 columnas. */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.project-card {
+    background-color: var(--color-white);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    /* Cortar bordes de la imagen */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    /* sombra inicial */
+    transition: var(--transition);
+    /* animación suave */
+    display: flex;
+    /* En caso de que el contenido no llene la tarjeta */
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    /* Desplaza hacia arriba al pasar el ratón (efecto vivo) */
+    box-shadow: var(--box-shadow);
+    /* Sombra más fuerte de premium */
+}
+
+.project-image-wrapper {
+    height: 200px;
+    overflow: hidden;
+}
+
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Recortar proporcionadamente */
+    transition: var(--transition);
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.05);
+    /* Efecto zoom ligero en la imagen */
+}
+
+.project-info {
+    padding: var(--spacing-md);
+    flex-grow: 1;
+    /* Rellenar el espacio sobrante si las tarjetas son de distinto alto */
+    display: flex;
+    flex-direction: column;
+}
+
+.project-info h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-gray-900);
+}
+
+.project-info p {
+    color: var(--color-gray-500);
+    margin-bottom: var(--spacing-md);
+    flex-grow: 1;
+    /* Empuja el botón hacia abajo */
+}
+
+
+/*==================================================
+  SECCIÓN CONTACTO
+==================================================*/
+.contact-form-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--color-white);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--color-gray-900);
+}
+
+/* Estilizando los campos de texto e inputs para que luzcan modernos */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #d1d5db;
+    /* gris claro */
+    border-radius: var(--border-radius);
+    font-family: inherit;
+    /* Hereda fuente Inter */
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    /* Transición al hacer focus */
+}
+
+/* Hacer más claros y legibles los textos de ejemplo (placeholders) */
+.form-group input:focus::placeholder,
+.form-group textarea:focus::placeholder {
+    opacity: 0.4;
+
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    /* Brillo azul al focus */
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+
+/*==================================================
+  FOOTER (Uso de Flexbox)
+==================================================*/
+.footer {
+    background-color: var(--color-gray-900);
+    color: var(--color-gray-500);
+    padding: var(--spacing-md) 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-social {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-social a {
+    color: var(--color-gray-500);
+    transition: var(--transition);
+}
+
+.footer-social a:hover {
+    color: var(--color-white);
+    /* Al pasar el cursor, es blanco */
+}
+
+
+/*==================================================
+  MEDIA QUERIES (Responsive Design)
+==================================================*/
+/* Tablet (Menor o igual a 992px) */
+@media (max-width: 992px) {
+    .hero {
+        flex-direction: column;
+        /* Apilar imagen y texto en pantallas pequeñas */
+        text-align: center;
+        padding-top: var(--spacing-lg);
+    }
+
+    .hero-actions {
+        justify-content: center;
+        /* Centrar los botones de Hero */
+    }
+}
+
+/* Teléfonos Móviles (Menor o igual a 768px) */
+@media (max-width: 768px) {
+
+    /* Ajustes básicos de fuente y espaciados */
+    .section-spacing {
+        padding: var(--spacing-lg) 0;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    /* Colapsar el menú de navegación a Stacked/Oculto (aquí versión simple) */
+    .header-container {
+        flex-direction: column;
+        /* Poner el menú debajo del logo en móviles */
+        height: auto;
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .nav-list {
+        flex-wrap: wrap;
+        /* Si hay muchos enlaces rompe la fila */
+        justify-content: center;
+    }
+
+    /* Sobre Mí: grid a 1 sola columna */
+    .about-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .about-image-wrapper {
+        margin: 0 auto;
+    }
+
+    /* Footer a 1 columna */
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+}
+
+/*==================================================
+  ANIMACIONES (Fase 1)
+==================================================*/
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(40px); /* Estado inicial desplazado hacia abajo */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Suavidad del efecto */
+    will-change: opacity, transform; /* Recomendación visual para navegadores */
+}
+
+.fade-in-section.visible {
+    opacity: 1;
+    transform: translateY(0); /* Estado final (visible y en su lugar exacto) */
+}
