@@ -54,11 +54,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const typed = new Typed('.typed-text', {
             strings: [
                 "Desarrollador Web Creativo.",
-                "Apasionado por el Diseño Frontend.",
-                "Creador de Experiencias Increíbles."
+                "Apasionado por el Diseño Frontend."
             ], // Las 3 frases que van a ir rotando
             typeSpeed: 50,    // Velocidad de escritura en ms
-            backSpeed: 50,    // Velocidad de borrado en ms
+            backSpeed: 25,    // Velocidad de borrado en ms
             backDelay: 2000,  // Tiempo de espera antes de empezar a borrar
             loop: true,       // Hace que la animación se repita infinitamente
             showCursor: true, // Muestra el cursor parpadeando
@@ -88,14 +87,14 @@ document.addEventListener("DOMContentLoaded", () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const counterElement = entry.target;
-                
+
                 // Función recursiva que actualiza los números hasta llegar al objetivo
                 const updateCount = () => {
                     // Obtenemos el objetivo del dataset de HTML (data-target)
-                    const target = parseInt(counterElement.getAttribute('data-target')); 
+                    const target = parseInt(counterElement.getAttribute('data-target'));
                     // Obtenemos el número actual (empieza en 0)
-                    const count = parseInt(counterElement.innerText);                   
-                    
+                    const count = parseInt(counterElement.innerText);
+
                     // Calculamos a qué ritmo incrementar los números
                     const increment = target / animationSpeed;
 
@@ -106,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         setTimeout(updateCount, 15);
                     } else {
                         // Terminamos asignando el objetivo exacto para evitar descadres
-                        counterElement.innerText = target; 
+                        counterElement.innerText = target;
                     }
                 };
 
